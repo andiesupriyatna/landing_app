@@ -10,11 +10,11 @@ import SwiftUI
 struct ContentView: View {
     @State private var showBars = false
        
-       let barData = [
-           BarData(label: "現在", height: 0.25),
-           BarData(label: "3ヶ月", height: 0.4),
-           BarData(label: "1年", height: 0.7),
-           BarData(label: "2年", height: 1.0)
+       let graphicData = [
+        Graphic(label: "現在", height: 0.25),
+        Graphic(label: "3ヶ月", height: 0.4),
+        Graphic(label: "1年", height: 0.7),
+        Graphic(label: "2年", height: 1.0)
        ]
        
        var body: some View {
@@ -37,14 +37,35 @@ struct ContentView: View {
                    Text("SpeakBUDDY")
                        .font(.largeTitle)
                        .fontWeight(.bold)
+                   
+               }
+               HStack {
                    Image("speakbuddy").resizable()
                        .frame(width: 100, height: 100)
+                   Spacer(minLength: 50)
                }
-           }
+               
+               HStack(alignment: .bottom, spacing: 20) {
+                   ForEach(graphicData) { data in
+                              VStack(spacing: 8) {
+                                  ZStack(alignment: .bottom) {
+                                      Rectangle()
+                                          .fill(Color.blue)
+                                          .frame(height: 200)
+                                  }
+                                  Text(data.label)
+                                      .font(.caption)
+                              }
+                              .frame(width: 40)
+                          }
+                      }
+                      .padding(.horizontal)
+              }
+              
        }
    }
 
-   struct BarData: Identifiable {
+   struct Graphic: Identifiable {
        let id = UUID()
        let label: String
        let height: Double
