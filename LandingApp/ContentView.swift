@@ -7,12 +7,10 @@
 
 import SwiftUI
 struct ContentView: View {
-    let bgColor = UIColor(named: "bgColor")
     let hello = "hello"
     let title = "SpeakBUDDY"
     let originalWidth: CFloat = 230
     let originalHeight: CFloat = 300
-    let logoImage : UIImage = UIImage(named: "speakbuddy")!
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 20) {
@@ -41,8 +39,7 @@ struct ContentView: View {
                        }
                        .frame(width: min(geometry.size.width * 0.8, 3000), height: min(geometry.size.height * 0.4, 300))
                        .padding(.horizontal, geometry.size.width * 0.05)
-                    
-                    Image(uiImage: logoImage)
+                    Image("speakbuddy")
                         .resizable().scaledToFit()
                         .frame(width: min(geometry.size.width * 0.3, CGFloat(self.originalWidth)))
                         .offset(x: -geometry.size.width * 0.15, y: -80)
@@ -75,7 +72,7 @@ struct ContentView: View {
                 .padding(.trailing, 30)
                 Spacer()
             }
-            .frame(width: geometry.size.width, height: geometry.size.height).background(LinearGradient(gradient: Gradient(colors: [Color(self.bgColor!), .white]),startPoint: .top, endPoint: .bottom))
+            .frame(width: geometry.size.width, height: geometry.size.height).background(LinearGradient(gradient: Gradient(colors: [Color(UIColor(named: "bgColor") ?? .blue), .white]),startPoint: .top, endPoint: .bottom))
         }
     }
 }
