@@ -72,7 +72,7 @@ struct ContentView: View {
                 .padding(.trailing, 30)
                 Spacer()
             }
-            .frame(width: geometry.size.width, height: geometry.size.height).background(LinearGradient(gradient: Gradient(colors: [Color(UIColor(named: "bgColor") ?? .blue), .white]),startPoint: .top, endPoint: .bottom))
+            .frame(width: geometry.size.width, height: geometry.size.height).background(LinearGradient(gradient: Gradient(colors: [Color("bgColor"), .white]),startPoint: .top, endPoint: .bottom))
         }
     }
 }
