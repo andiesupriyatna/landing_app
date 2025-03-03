@@ -75,6 +75,10 @@ struct ContentView: View {
             .frame(width: geometry.size.width, height: geometry.size.height).background(LinearGradient(gradient: Gradient(colors: [Color("bgColor"), .white]),startPoint: .top, endPoint: .bottom))
         }
     }
+    
+    private func checkDevice() {
+        
+    }
 }
 
 struct BlueBar: View {
@@ -97,12 +101,25 @@ struct BlueBar: View {
                 .foregroundColor(.black)
         }
         .onAppear {
-            withAnimation(.easeOut(duration: 1.0).delay(0.2)) {
-                animatedHeight = height
+            startRepeatingAnimation()
             }
         }
-    }
+    
+    private func startRepeatingAnimation() {
+            withAnimation(.easeOut(duration: 1.0)) {
+                animatedHeight = height
+            }
+            
+            Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true) { _ in
+                animatedHeight = 0
+                withAnimation(.easeOut(duration: 1.0)) {
+                    animatedHeight = height
+                }
+            }
+        }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
