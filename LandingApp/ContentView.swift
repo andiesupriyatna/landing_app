@@ -51,7 +51,7 @@ struct ContentView: View {
                         .font(.system(size: 18))
                     Text("レベルアップ")
                         .font(.system(size: 24, weight: .bold))
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color("textgradientBotColor"))
                 }
                 .padding(.top, 30)
                 
@@ -63,7 +63,7 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .frame(width: min(geometry.size.width * 0.8, 300), height: 25)
                         .padding()
-                        .background(Color.blue)
+                        .background(Color("bluesbColor"))
                         .cornerRadius(30)
                 }
                 .padding(.horizontal, 20)
@@ -89,7 +89,7 @@ struct BlueBar: View {
                     .fill(Color.blue.opacity(0.1))
                     .frame(width: 40, height: height)
                 RoundedRectangle(cornerRadius: 4)
-                    .fill(Color.blue)
+                    .fill(Color("bluesbColor"))
                     .frame(width: 40, height: animatedHeight)
             }
             Text(label)
